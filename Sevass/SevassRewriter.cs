@@ -44,7 +44,6 @@ public class SevassRewriter
             else
             {
                 sevass += token.LeadingTrivia.ToFullString() + token.Text + token.TrailingTrivia.ToFullString();
-                Console.WriteLine("Token not found: " + token.Kind() + "(" + token.Text + ")");
             }
         }
 
