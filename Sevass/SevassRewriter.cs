@@ -34,7 +34,9 @@ public class SevassRewriter
         string sevass = "";
         foreach (SyntaxToken token in root.DescendantTokens())
         {
-            if (SevassDictionary.SyntaxKindToSevass.ContainsKey(token.Kind()))
+            bool hasKey = SevassDictionary.SyntaxKindToSevass.ContainsKey(token.Kind());
+
+            if (hasKey)
             {
                 sevass += token.LeadingTrivia.ToFullString() + SevassDictionary.SyntaxKindToSevass[token.Kind()] +
                           token.TrailingTrivia.ToFullString();
@@ -42,6 +44,7 @@ public class SevassRewriter
             else
             {
                 sevass += token.LeadingTrivia.ToFullString() + token.Text + token.TrailingTrivia.ToFullString();
+                Console.WriteLine("Token not found: " + token.Kind() + "(" + token.Text + ")");
             }
         }
 
