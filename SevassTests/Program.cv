@@ -1,14 +1,12 @@
-using System;
+använder System;
 
-namespace SevassTest
+namnrymd SevassTest
 {
-    intern class Program
+    intern klass Program
     {
         privat statisk läsbar kort A = 5;
-        
-        privat statisk läsbar kort dettaärfalskt = 10;
 
-        offentlig Program[] Array { get; set; }
+        offentlig Program[] Array { hämta; sätt; }
 
         statisk tomhet Main(sträng[] args)
         {
@@ -26,7 +24,7 @@ namespace SevassTest
             }
             annars om (isTrue == falskt)
             {
-                Console.WriteLine("isTrue is false, falskt");
+                Console.WriteLine("isTrue is false");
             }
         }
     }
