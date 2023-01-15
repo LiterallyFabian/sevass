@@ -1,0 +1,27 @@
+{
+  "name": "sevassvsc",
+  "displayName": "SevassVSC",
+  "description": "Sevass language support for VSC.",
+  "version": "0.0.1",
+  "publisher": "Salmon",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "sevass",
+      "aliases": ["Sevass", "sevass"],
+      "extensions": [".cv"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "sevass",
+      "scopeName": "source.cs",
+      "path": "./syntaxes/sevass.tmLanguage.json"
+    }]
+  }
+}
