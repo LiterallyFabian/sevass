@@ -1,6 +1,8 @@
 ﻿// ReSharper disable IdentifierTypo
 
-using System.Globalization;
+using System;
+
+#nullable enable
 
 namespace Sevass;
 
@@ -30,12 +32,16 @@ public class Konsol
 
 public class Konvertera
 {
+#pragma warning disable CS8604
+#pragma warning disable CS8602
     public static int TillHel32(string? s) => int.Parse(s);
     public static double? TillDubbel(string? s) => double.Parse(s);
     public static bool? TillBool(string? s) => bool.Parse(s);
     public static char? TillTecken(string? s) => char.Parse(s);
     public static string? TillSträng(object? o) => o.ToString();
     public static string? TillBas64Sträng(byte[]? b) => Convert.ToBase64String(b);
+#pragma warning restore CS8604
+#pragma warning restore CS8602
 }
 
 #region Exceptions

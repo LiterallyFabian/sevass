@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace Sevass;
 
@@ -107,6 +108,10 @@ class Program
         string csharpText = SevassRewriter.ConvertSevassToCSharp(text);
         File.WriteAllText(newPath, csharpText);
 
+        // add the sevass wrapper to the file
+        string assemblyPath = Assembly.GetExecutingAssembly().Location;
+        string wrapperPath = Path.GetDirectoryName(assemblyPath) + "/SevassWrapper.cs";
+
         Console.WriteLine("Converted Sevass successfully...");
         Console.WriteLine("Running csc...");
 
@@ -114,11 +119,13 @@ class Program
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "csc",
-            Arguments = "/out:" + Path.GetFileNameWithoutExtension(path) + ".exe " + newPath,
+            Arguments = "/out:" + Path.GetFileNameWithoutExtension(path) + ".exe " + newPath + " " + wrapperPath,
             UseShellExecute = false,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
+        
+        Console.WriteLine("Command: " + startInfo.FileName + " " + startInfo.Arguments + "");
 
         Process? process = Process.Start(startInfo);
         if (process == null)
