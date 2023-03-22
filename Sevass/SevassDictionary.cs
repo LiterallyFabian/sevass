@@ -2,10 +2,14 @@
 
 namespace Sevass;
 
+/// <summary>
+/// The SevassDictionary contains a dictionaries that map Sevass keywords to C# keywords and vice versa.
+/// </summary>
 public static class SevassDictionary
 {
     /// <summary>
     /// A dictionary that maps a syntax kind to its corresponding sevass keyword.
+    /// For example, SyntaxKind.DoubleKeyword maps to "dubbel".
     /// </summary>
     public static readonly Dictionary<SyntaxKind, string> SyntaxKindToSevass = new()
     {
@@ -80,7 +84,6 @@ public static class SevassDictionary
         {SyntaxKind.GetKeyword, "hämta"},
         {SyntaxKind.SetKeyword, "sätt"},
         {SyntaxKind.AddKeyword, "lägg"},
-        {SyntaxKind.RemoveKeyword, "ta"},
     };
 
     /// <summary>
