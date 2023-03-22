@@ -1,6 +1,6 @@
-# S#, Sevass
+# <img src="SevassVSC/icons/logo.png" width=50> CV, Sevass 
 
-S#, pronounced "se-vass" is a C# dialect where everything is in Swedish. 
+CV, pronounced "se-vass" is a C# dialect where everything is in Swedish. 
 
 ![image](https://user-images.githubusercontent.com/47401343/212559687-8c203051-3771-4b25-92cc-9abd7ae0a4ad.png)
 
