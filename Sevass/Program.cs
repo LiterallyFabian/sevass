@@ -1,4 +1,7 @@
-﻿namespace Sevass;
+﻿using System.Collections.Immutable;
+using System.Diagnostics;
+
+namespace Sevass;
 
 class Program
 {
@@ -14,6 +17,14 @@ class Program
         }
         else
         {
+            if (args[0] == "build" || args[0] == "bygg") // build command, build the project and return
+            {
+                Build(args);
+                return;
+            }
+
+            // non-build command, continue converting
+
             path = args[0];
         }
 
@@ -29,16 +40,51 @@ class Program
         {
             // convert to .cv file
             string newPath = Path.ChangeExtension(path, ".cv");
-            File.WriteAllText(newPath, SevassRewriter.ConvertCSharpToSevass(text));
+            string sevassText = SevassRewriter.ConvertCSharpToSevass(text);
+            //File.WriteAllText(newPath, SevassRewriter.ConvertCSharpToSevass(sevassText));
+            Console.Write(sevassText);
         }
         else if (Path.GetExtension(path) == ".cv")
         {
             string newPath = Path.ChangeExtension(path, ".cs");
-            File.WriteAllText(newPath, SevassRewriter.ConvertSevassToCSharp(text));
+            string csharpText = SevassRewriter.ConvertSevassToCSharp(text);
+            //File.WriteAllText(newPath, SevassRewriter.ConvertSevassToCSharp(csharpText));
+            Console.Write(csharpText);
         }
         else
         {
             Console.WriteLine("File extension not supported, exiting...");
         }
+    }
+
+    public static void Build(string[] args)
+    {
+        string path = args[1];
+        // convert to .cs file
+        string newPath = Path.GetTempPath() + Path.GetFileNameWithoutExtension(path) + ".cs";
+        string text = File.ReadAllText(path);
+        string csharpText = SevassRewriter.ConvertSevassToCSharp(text);
+        File.WriteAllText(newPath, csharpText);
+
+        // run csc to compile the file to an exe
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "csc",
+            Arguments = "/out:" + Path.GetFileNameWithoutExtension(path) + ".exe " + newPath,
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+        };
+        Process? process = Process.Start(startInfo);
+
+        if (process == null)
+        {
+            Console.WriteLine("Failed to start process");
+            return;
+        }
+
+        process.WaitForExit();
+        Console.WriteLine(process.StandardOutput.ReadToEnd());
+        Console.WriteLine(process.StandardError.ReadToEnd());
     }
 }
