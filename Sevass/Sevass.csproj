@@ -13,4 +13,10 @@
       <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.5.0-2.final" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="SevassWrapper.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+    </ItemGroup>
+
 </Project>
