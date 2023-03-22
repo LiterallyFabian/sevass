@@ -30,10 +30,16 @@ class Program
         switch (command)
         {
             case "build":
+            case "bygg":
                 Build(args);
                 break;
             case "translate":
+            case "översätt":
                 Translate(path);
+                break;
+            case "run":
+            case "kör":
+                Run(path);
                 break;
             default:
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -97,7 +103,7 @@ class Program
         string text = File.ReadAllText(path);
         string csharpText = SevassRewriter.ConvertSevassToCSharp(text);
         File.WriteAllText(newPath, csharpText);
-        
+
         Console.WriteLine("Converted Sevass successfully...");
         Console.WriteLine("Running csc...");
 
@@ -110,7 +116,7 @@ class Program
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
-        
+
         Process? process = Process.Start(startInfo);
         if (process == null)
         {
@@ -118,13 +124,41 @@ class Program
             Console.WriteLine("Failed to start build process");
             return;
         }
-        
+
         process.WaitForExit();
         Console.WriteLine(process.StandardOutput.ReadToEnd());
         Console.WriteLine(process.StandardError.ReadToEnd());
-        
+
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Build completed successfully!");
         Console.ResetColor();
+    }
+
+    private static void Run(string path)
+    {
+        // build the file
+        Build(new[] {"build", path});
+
+        // run the file
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = Path.GetFileNameWithoutExtension(path) + ".exe",
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+        };
+
+        Process? process = Process.Start(startInfo);
+
+        if (process == null)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Failed to start build process");
+            return;
+        }
+
+        process.WaitForExit();
+        Console.WriteLine(process.StandardOutput.ReadToEnd());
+        Console.WriteLine(process.StandardError.ReadToEnd());
     }
 }
