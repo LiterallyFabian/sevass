@@ -31,7 +31,7 @@ class Program
         {
             case "build":
             case "bygg":
-                Build(args);
+                Build(path);
                 break;
             case "translate":
             case "översätt":
@@ -83,15 +83,18 @@ class Program
         }
     }
 
-    public static void Build(string[] args)
+    /// <summary>
+    /// Builds a Sevass file into an executable.
+    /// </summary>
+    /// <param name="path">The path to the Sevass file.</param>
+    /// <returns>True if the build succeeded, false otherwise.</returns>
+    public static bool Build(string path)
     {
-        string path = args[1];
-
         if (Path.GetExtension(path) != ".cv")
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("File extension not supported, exiting...");
-            return;
+            return false;
         }
 
         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -122,22 +125,34 @@ class Program
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Failed to start build process");
-            return;
+            return false;
         }
 
         process.WaitForExit();
         Console.WriteLine(process.StandardOutput.ReadToEnd());
         Console.WriteLine(process.StandardError.ReadToEnd());
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Build completed successfully!");
-        Console.ResetColor();
+        if (process.ExitCode != 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Build failed");
+            Console.ResetColor();
+            return false;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Build succeeded");
+            Console.ResetColor();
+            return true;
+        }
     }
 
     private static void Run(string path)
     {
         // build the file
-        Build(new[] {"build", path});
+        if (!Build(path))
+            return;
 
         // run the file
         ProcessStartInfo startInfo = new ProcessStartInfo
