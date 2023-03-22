@@ -36,7 +36,7 @@ public static class SevassDictionary
         {SyntaxKind.FalseKeyword, "falskt"},
         {SyntaxKind.IfKeyword, "om"},
         {SyntaxKind.ElseKeyword, "annars"},
-        {SyntaxKind.WhileKeyword, "medans"},
+        {SyntaxKind.WhileKeyword, "medan"},
         {SyntaxKind.ForKeyword, "för"},
         {SyntaxKind.ForEachKeyword, "förvarje"},
         {SyntaxKind.DoKeyword, "gör"},
