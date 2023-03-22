@@ -5,21 +5,23 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Sevass;
 
+/// <summary>
+/// The SevassRewriter converts Sevass code to C# code and vice versa. It uses a dictionary to map Sevass keywords to C# keywords.
+/// </summary>
 public class SevassRewriter
 {
     public static string ConvertSevassToCSharp(string sevassCode)
     {
-        // Iterate through the dictionary and create a regular expression pattern
-        // that matches any of the sevass keywords
-        var sevassRegex = new Regex(string.Join("|", SevassDictionary.SevassToSyntaxKind.Keys));
+        // match any of the sevass keywords, but only when they are not part of a class name or string
+        Regex sevassRegex = new Regex(@"(?<![\""'])(?<![\p{L}_])(" + string.Join("|", SevassDictionary.SevassToSyntaxKind.Keys) + @")(?![\p{L}_])(?![\""'])");
 
-        // Use the Replace method to replace all matches of the regular expression pattern
-        // with the corresponding C# keyword
+
+        // replace all matches of the regular expression pattern with the corresponding C# keyword
         string csharpCode = sevassRegex.Replace(sevassCode, match => SevassDictionary.SevassToSyntaxKind[match.Value]);
+        csharpCode = csharpCode.Replace("Huvud", "Main");
 
         return csharpCode;
     }
-
 
 
     public static string ConvertCSharpToSevass(string csharpCode)
@@ -45,6 +47,8 @@ public class SevassRewriter
             {
                 sevass += token.LeadingTrivia.ToFullString() + token.Text + token.TrailingTrivia.ToFullString();
             }
+
+            //Console.WriteLine($"{token.Text} - {token.Kind()}");
         }
 
         return sevass;
