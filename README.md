@@ -30,7 +30,7 @@ dotnet build
 
 | Command                                | Description |
 |----------------------------------------|-------------|
-| `sevass translate <path [cs&#124;cv]>` | Translates Sevass code into C# code, or vice versa. |
+| `sevass translate <path [cs\|cv]>` | Translates Sevass code into C# code, or vice versa. |
 | `sevass build <path [cv]>`             | Compiles Sevass code into an executable. |
 | `sevass run <path [cv]>`               | Compiles and runs Sevass code. |
 
