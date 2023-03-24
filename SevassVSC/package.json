@@ -2,7 +2,7 @@
   "name": "sevassvsc",
   "displayName": "Sevass",
   "description": "Sevass language support for Visual Studio Code.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "Salmon",
   "icon": "icons/logo.png",
   "repository": {

@@ -2046,7 +2046,7 @@
 			]
 		},
 		"for-statement": {
-			"begin": "(?<!\\.)\\b(for)\\b\\s*(?=\\()",
+			"begin": "(?<!\\.)\\b(för)\\b\\s*(?=\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.loop.for.cs"
@@ -2088,7 +2088,7 @@
 			]
 		},
 		"foreach-statement": {
-			"begin": "(?<!\\.)\\b(foreach)\\b\\s*(?=\\()",
+			"begin": "(?<!\\.)\\b(förvarje)\\b\\s*(?=\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.loop.foreach.cs"
