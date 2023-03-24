@@ -10,6 +10,8 @@ CV, pronounced "se-vass" is a C# dialect where everything is in Swedish.
 
 - The Roslyn compiler, which is included in the [.NET SDK](https://dotnet.microsoft.com/en-us/), added to PATH. You can
   run `csc` to verify that it is installed.
+- [Visual Studio Code](https://code.visualstudio.com/) with the [Sevass language extension](https://marketplace.visualstudio.com/items?itemName=Salmon.sevassvsc) (optional)
+- [Git](https://git-scm.com/) (optional)
 
 1. Clone the repository
 
