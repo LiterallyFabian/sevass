@@ -12,7 +12,7 @@ class Program
     {
         if (args.Length < 2)
         {
-            Console.WriteLine("Usage: sevass [build|translate] <path>");
+            Console.WriteLine("Usage: sevass [build|translate|run] <path>");
             return;
         }
 
@@ -112,8 +112,8 @@ class Program
         string assemblyPath = Assembly.GetExecutingAssembly().Location;
         string wrapperPath = Path.GetDirectoryName(assemblyPath) + "/SevassWrapper.cs";
 
-        Console.WriteLine("Converted Sevass successfully...");
-        Console.WriteLine("Running csc...");
+        Console.WriteLine("Converted Sevass successfully.");
+        Console.WriteLine("Building using Roslyn...");
 
         // run csc to compile the file to an exe
         ProcessStartInfo startInfo = new ProcessStartInfo
@@ -124,8 +124,8 @@ class Program
             RedirectStandardOutput = true,
             RedirectStandardError = true,
         };
-        
-        Console.WriteLine("Command: " + startInfo.FileName + " " + startInfo.Arguments + "");
+
+        //Console.WriteLine("Command: " + startInfo.FileName + " " + startInfo.Arguments + "");
 
         Process? process = Process.Start(startInfo);
         if (process == null)
@@ -136,8 +136,11 @@ class Program
         }
 
         process.WaitForExit();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine(process.StandardOutput.ReadToEnd());
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(process.StandardError.ReadToEnd());
+        Console.ResetColor();
 
         if (process.ExitCode != 0)
         {
