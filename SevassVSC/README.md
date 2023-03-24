@@ -1,4 +1,4 @@
-# <img src="SevassVSC/icons/logo.png" width=50> CV, Sevass
+# <img src="https://i.imgur.com/lsvjHfq.png" width=50> CV, Sevass
 
 CV, pronounced "se-vass" is a C# dialect where everything is in Swedish. yep, that's it.
 
