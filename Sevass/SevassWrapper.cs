@@ -137,8 +137,8 @@ public class DatumTid
 public class Slump
 {
     static readonly Random R = new Random();
-    public static int Nästa() => R.Next();
-    public static int Nästa(int max) => R.Next(max);
-    public static int Nästa(int min, int max) => R.Next(min, max);
-    public static double NästaDubbel() => R.NextDouble();
+    public int Nästa() => R.Next();
+    public int Nästa(int max) => R.Next(max);
+    public int Nästa(int min, int max) => R.Next(min, max);
+    public double NästaDubbel() => R.NextDouble();
 }
