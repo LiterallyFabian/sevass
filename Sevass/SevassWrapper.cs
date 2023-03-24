@@ -8,19 +8,19 @@ namespace Sevass;
 
 public class Konsol
 {
-    public static void Skriv(string? t = "") => Console.WriteLine(t);
-    public static void Skriv(int? t = 0) => Console.WriteLine(t);
-    public static void Skriv(double? t = 0) => Console.WriteLine(t);
-    public static void Skriv(bool? t = false) => Console.WriteLine(t);
-    public static void Skriv(object? t = null) => Console.WriteLine(t);
-    public static void Skriv<T>(T? t = default) => Console.WriteLine(t);
+    public static void Skriv(string? t = "") => Console.Write(t);
+    public static void Skriv(int? t = 0) => Console.Write(t);
+    public static void Skriv(double? t = 0) => Console.Write(t);
+    public static void Skriv(bool? t = false) => Console.Write(t);
+    public static void Skriv(object? t = null) => Console.Write(t);
+    public static void Skriv<T>(T? t = default) => Console.Write(t);
 
-    public static void SkrivRad(string? t = "") => Console.Write(t);
-    public static void SkrivRad(int? t = 0) => Console.Write(t);
-    public static void SkrivRad(double? t = 0) => Console.Write(t);
-    public static void SkrivRad(bool? t = false) => Console.Write(t);
-    public static void SkrivRad(object? t = null) => Console.Write(t);
-    public static void SkrivRad<T>(T? t = default) => Console.Write(t);
+    public static void SkrivRad(string? t = "") => Console.WriteLine(t);
+    public static void SkrivRad(int? t = 0) => Console.WriteLine(t);
+    public static void SkrivRad(double? t = 0) => Console.WriteLine(t);
+    public static void SkrivRad(bool? t = false) => Console.WriteLine(t);
+    public static void SkrivRad(object? t = null) => Console.WriteLine(t);
+    public static void SkrivRad<T>(T? t = default) => Console.WriteLine(t);
 
 
     public static string? LäsRad() => Console.ReadLine();
