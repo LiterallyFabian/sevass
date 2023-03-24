@@ -84,6 +84,10 @@ public static class SevassDictionary
         {SyntaxKind.GetKeyword, "hämta"},
         {SyntaxKind.SetKeyword, "sätt"},
         {SyntaxKind.AddKeyword, "lägg"},
+        {SyntaxKind.AwaitKeyword, "invänta"},
+        {SyntaxKind.WhenKeyword, "när"},
+        {SyntaxKind.NameOfKeyword, "namnav"},
+        {SyntaxKind.GotoKeyword, "gåtill"},
     };
 
     /// <summary>

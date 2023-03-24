@@ -1563,7 +1563,7 @@
 			]
 		},
 		"goto-statement": {
-			"begin": "(?<!\\.)\\b(goto)\\b",
+			"begin": "(?<!\\.)\\b(gåtill)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.goto.cs"
@@ -1600,7 +1600,7 @@
 			]
 		},
 		"return-statement": {
-			"begin": "(?<!\\.)\\b(return)\\b",
+			"begin": "(?<!\\.)\\b(återvänd)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.flow.return.cs"
@@ -1680,7 +1680,7 @@
 			}
 		},
 		"await-statement": {
-			"begin": "(?<!\\.)\\b(await)\\b",
+			"begin": "(?<!\\.)\\b(invänta)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.await.cs"
@@ -1741,7 +1741,7 @@
 			]
 		},
 		"switch-statement": {
-			"begin": "(?<!\\.)\\b(switch)\\b\\s*(?=\\()",
+			"begin": "(?<!\\.)\\b(växla)\\b\\s*(?=\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.switch.cs"
@@ -1926,7 +1926,7 @@
 			]
 		},
 		"switch-when-clause": {
-			"begin": "(?<!\\.)\\b(when)\\b\\s*(\\()?",
+			"begin": "(?<!\\.)\\b(när)\\b\\s*(\\()?",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.try.when.cs"
@@ -1967,7 +1967,7 @@
 		"switch-label": {
 			"patterns": [
 				{
-					"begin": "(?<!\\.)\\b(case)\\b\\s+",
+					"begin": "(?<!\\.)\\b(fall)\\b\\s+",
 					"beginCaptures": {
 						"1": {
 							"name": "keyword.control.case.cs"
@@ -1986,7 +1986,7 @@
 					]
 				},
 				{
-					"match": "(?<!\\.)\\b(default)\\b\\s*(:)",
+					"match": "(?<!\\.)\\b(standard)\\b\\s*(:)",
 					"captures": {
 						"1": {
 							"name": "keyword.control.default.cs"
@@ -1999,7 +1999,7 @@
 			]
 		},
 		"do-statement": {
-			"begin": "(?<!\\.)\\b(do)\\b",
+			"begin": "(?<!\\.)\\b(gör)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.loop.do.cs"
@@ -2173,7 +2173,7 @@
 			]
 		},
 		"try-block": {
-			"begin": "(?<!\\.)\\b(try)\\b",
+			"begin": "(?<!\\.)\\b(försök)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.try.cs"
@@ -2190,7 +2190,7 @@
 			]
 		},
 		"finally-clause": {
-			"begin": "(?<!\\.)\\b(finally)\\b",
+			"begin": "(?<!\\.)\\b(slutligen)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.try.finally.cs"
@@ -2207,7 +2207,7 @@
 			]
 		},
 		"catch-clause": {
-			"begin": "(?<!\\.)\\b(catch)\\b",
+			"begin": "(?<!\\.)\\b(fånga)\\b",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.try.catch.cs"
@@ -2258,7 +2258,7 @@
 			]
 		},
 		"when-clause": {
-			"begin": "(?<!\\.)\\b(when)\\b\\s*(\\()",
+			"begin": "(?<!\\.)\\b(när)\\b\\s*(\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.try.when.cs"
@@ -2303,7 +2303,7 @@
 			]
 		},
 		"lock-statement": {
-			"begin": "(?<!\\.)\\b(lock)\\b\\s*(?=\\()",
+			"begin": "(?<!\\.)\\b(lås)\\b\\s*(?=\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.lock.cs"
@@ -2652,7 +2652,7 @@
 			]
 		},
 		"typeof-or-default-expression": {
-			"begin": "(?<!\\.)\\b(?:(typeof)|(default))\\b\\s*(\\()",
+			"begin": "(?<!\\.)\\b(?:(typav)|(standard))\\b\\s*(\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.typeof.cs"
@@ -2677,7 +2677,7 @@
 			]
 		},
 		"nameof-expression": {
-			"begin": "(?<!\\.)\\b(nameof)\\b\\s*(\\()",
+			"begin": "(?<!\\.)\\b(namnav)\\b\\s*(\\()",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.nameof.cs"
@@ -2699,7 +2699,7 @@
 			]
 		},
 		"throw-expression": {
-			"match": "(?<!\\.)\\b(throw)\\b",
+			"match": "(?<!\\.)\\b(kasta)\\b",
 			"captures": {
 				"1": {
 					"name": "keyword.control.flow.throw.cs"
@@ -2988,17 +2988,17 @@
 			"patterns": [
 				{
 					"name": "constant.language.boolean.true.cs",
-					"match": "(?<!\\.)\\btrue\\b"
+					"match": "(?<!\\.)\\bsant\\b"
 				},
 				{
 					"name": "constant.language.boolean.false.cs",
-					"match": "(?<!\\.)\\bfalse\\b"
+					"match": "(?<!\\.)\\bfalskt\\b"
 				}
 			]
 		},
 		"null-literal": {
 			"name": "constant.language.null.cs",
-			"match": "(?<!\\.)\\bnull\\b"
+			"match": "(?<!\\.)\\btomhet\\b"
 		},
 		"numeric-literal": {
 			"match": "(?<!\\w)\\.?\\d(?:(?:[0-9a-zA-Z_\\.]|_)|(?<=[eE])[+-])*",

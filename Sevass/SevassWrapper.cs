@@ -80,6 +80,13 @@ public class TomhetReferensUndantag : NullReferenceException
     }
 }
 
+public class FormatUndantag : FormatException
+{
+    public FormatUndantag(string? meddelande) : base(meddelande)
+    {
+    }
+}
+
 #endregion
 
 public class Matematik
